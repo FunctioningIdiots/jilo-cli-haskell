@@ -8,4 +8,4 @@ import Data.Aeson.Lens
 
 list baseApiUrl = do
     r <- get (baseApiUrl ++ "/notes")
-    return $ r ^. responseBody . key "data" . nth 0 . key "text" . _String
+    return $ r ^. responseBody . key "data" . values . key "text" . _String
