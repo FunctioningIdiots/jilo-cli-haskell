@@ -7,5 +7,5 @@ import Control.Lens
 import Data.Aeson.Lens
 
 list baseApiUrl = do
-    r <- get (baseApiUrl ++ "/notes")
+    r <- get (baseApiUrl ++ "/note")
     return $ r ^. responseBody . key "data" . values . key "text" . _String
