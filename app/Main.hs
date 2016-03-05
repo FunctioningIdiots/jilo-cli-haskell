@@ -7,6 +7,7 @@ import System.Environment
 import Jilo.Note as Note
 import Jilo.Cli
 import Jilo.Commands
+import qualified Data.Text as T
 import qualified Data.Text.IO as TIO
 import qualified Data.ByteString.Char8 as BSC8
 
@@ -21,5 +22,5 @@ main = do
             BSC8.putStrLn msg
         ListNotes -> do
             notes <- Note.list baseApiUrl
-            print notes
+            TIO.putStr $ T.unlines notes
         Usage -> TIO.putStrLn usage
