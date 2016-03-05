@@ -1,14 +1,16 @@
+{-# LANGUAGE OverloadedStrings #-}
+
 module Jilo.Commands where
 
-import Text.Printf
+import qualified Data.Text as T
 
 data Command =
-    NotImplemented String
-    | AddNote String
+    NotImplemented T.Text
+    | AddNote T.Text
     | ListNotes
     | Usage
 
-usage :: String
+usage :: T.Text
 usage = "Jilo supports the following commands:\n\
     \    For Notes\n\
     \       note <url-or-text> <hash-tags>\n\
@@ -30,7 +32,7 @@ usage = "Jilo supports the following commands:\n\
     \        stats summary <hash-tags | mined-keywords> - NOT IMPLEMENTED\n\
     \        stats detail <hash-tags | mined-keywords> - NOT IMPLEMENTED"
 
-notImplemented :: String -> String
-notImplemented =
-    printf "Sorry, this command is not supported yet: %s"
+notImplemented :: T.Text -> T.Text
+notImplemented = T.append "Sorry, this command is not supported yet: "
+
 
